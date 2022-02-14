@@ -1,3 +1,0 @@
-C:/Users/Arkiserat/Desktop/Uni/Lab di programmazione/Elaborato/Cpp/ToDoList/cmake-build-debug/CMakeFiles/ToDoList.dir
-C:/Users/Arkiserat/Desktop/Uni/Lab di programmazione/Elaborato/Cpp/ToDoList/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Arkiserat/Desktop/Uni/Lab di programmazione/Elaborato/Cpp/ToDoList/cmake-build-debug/CMakeFiles/rebuild_cache.dir
