@@ -1,9 +1,11 @@
 #include <iostream>
+#include "Header/ToDoInterf.h"
+#include "Header/ToDoList.h"
+#include "Header/Observer.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
-    std::cout << "siamo tutti belli" << std::endl;
-
+    ToDoInterf interf;
+    Observer observer;
 
     return 0;
 }

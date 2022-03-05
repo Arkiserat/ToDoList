@@ -3,4 +3,4 @@ project(ToDoList)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(ToDoList main.cpp Header/ToDoList.h Header/Date.h Source/Task.cpp Header/Task.h Source/Date.cpp Source/ToDoList.cpp Source/Observer.cpp Header/Observer.h)
+add_executable(ToDoList main.cpp Header/ToDoList.h Header/Date.h Source/Task.cpp Header/Task.h Source/Date.cpp Source/ToDoList.cpp Source/Observer.cpp Header/Observer.h Source/ToDoInterf.cpp Header/ToDoInterf.h)

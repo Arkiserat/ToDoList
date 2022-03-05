@@ -7,19 +7,19 @@
 
 #include "ToDoList.h"
 #include "Task.h"
+#include "ToDoInterf.h"
 
 class Observer {
 private:
-    ToDoList* list;
+    ToDoInterf* interf;
 
 public:
-    Observer();
+    Observer(ToDoInterf* i);
 
     virtual ~Observer();
 
-    void update(Task* t);
+    void update();
 
-    void setList(ToDoList *l);
 };
 
 

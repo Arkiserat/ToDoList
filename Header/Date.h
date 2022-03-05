@@ -25,6 +25,8 @@ public:
     void setMonth(int month);
 
     void setYear(int year);
+
+    bool operator<=(Date &date) const;
 };
 
 #endif //TODOLIST_DATE_H

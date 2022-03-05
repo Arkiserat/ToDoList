@@ -3,10 +3,20 @@
 //
 
 #include "../Header/Date.h"
+#include <ctime>
 
-Date::Date() = default;
+Date::Date() {
+    std::time_t now = std::time(0);
+    std::tm *lt = std::localtime(&now);
 
-Date::Date(int day, int month, int year) : day(day), month(month), year(year) {}
+    year = 1900 + lt->tm_year;
+    month = 1 + lt->tm_mon;
+    day = lt->tm_mday;
+}
+
+Date::Date(int day, int month, int year) : day(day), month(month), year(year) {
+    //next: gestione di date sbagliate
+}
 
 Date::~Date() = default;
 
@@ -32,4 +42,20 @@ void Date::setMonth(int month) {
 
 void Date::setYear(int year) {
     Date::year = year;
+}
+
+bool Date::operator<=(Date &date) const{
+    if (this->year < date.getYear())
+        return true;
+    else
+        if (this->year == date.getYear()) {
+            if (this->month < date.getMonth())
+                return true;
+            else
+                if (this->month == date.getMonth()){
+                    if (this->day <= date.getDay())
+                        return true;
+                }
+        }
+    return false;
 }

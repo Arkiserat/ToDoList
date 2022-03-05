@@ -3,13 +3,15 @@
 //
 
 #include "../Header/Task.h"
+#include <iostream>
 
-Task::Task(std::string name, Date date, Observer* o) {
+Task::Task(std::string name, Date date) {
     Task::name = name;
     Task::date = date;
     Task::done = false;
-    Task::o = o;
 }
+
+Task::~Task() = default;
 
 bool Task::isDone() const {
     return done;
@@ -31,9 +33,16 @@ void Task::setDate(const Date &date) {
     Task::date = date;
 }
 
-void Task::end() {
-    Task::done = true;
-    o->update(this);
+void Task::toggleDone() {
+    if(done)
+        Task::done = false;
+    else
+        Task::done = true;
 }
 
-Task::~Task() = default;
+void Task::printTask() const {
+    if(done)
+        std::cout << " _ " << name << " " << date.getDay() << "/" << date.getMonth() << "/" << date.getYear() << std::endl;
+    else
+        std::cout << " X " << name << " " << date.getDay() << "/" << date.getMonth() << "/" << date.getYear() << std::endl;
+}

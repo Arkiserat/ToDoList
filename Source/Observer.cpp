@@ -4,14 +4,10 @@
 
 #include "../Header/Observer.h"
 
-Observer::Observer() = default;
+Observer::Observer(ToDoInterf *i) : interf(i) {}
 
 Observer::~Observer() = default;
 
-void Observer::update(Task* t) {
-    list->task_done(*t);
-}
-
-void Observer::setList(ToDoList *l) {
-    this->list = l;
+void Observer::update() {
+    interf->count_tasks();
 }

@@ -16,24 +16,20 @@ private:
     std::string name;
     Date date;
 
-    Observer *o;
-
 public:
-    Task(std::string name, Date date, Observer *o);
+    Task(std::string name, Date date);
 
     ~Task();
 
     bool isDone() const;
-
     const std::string &getName() const;
-
     const Date &getDate() const;
 
     void setName(const std::string &name);
-
     void setDate(const Date &date);
+    void toggleDone();
 
-    void end();
+    void printTask() const;
 
 };
 
