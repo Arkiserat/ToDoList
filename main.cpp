@@ -4,8 +4,7 @@
 #include "Header/Observer.h"
 
 int main() {
-    ToDoInterf interf;
-    Observer observer;
+
 
     return 0;
 }

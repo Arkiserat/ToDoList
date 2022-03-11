@@ -7,8 +7,7 @@
 
 #include <list>
 #include "Task.h"
-//#include "Observer.h"
-//#include "../Source/Observer.cpp"
+#include "Observer.h"
 
 //creare una classe "interfaccia che tenga
 // - numero di task da fare

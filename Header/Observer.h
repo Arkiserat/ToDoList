@@ -5,20 +5,16 @@
 #ifndef TODOLIST_OBSERVER_H
 #define TODOLIST_OBSERVER_H
 
-#include "ToDoList.h"
-#include "Task.h"
-#include "ToDoInterf.h"
+class ToDoList;
 
 class Observer {
-private:
-    ToDoInterf* interf;
 
 public:
-    Observer(ToDoInterf* i);
+    Observer();
 
     virtual ~Observer();
 
-    void update();
+    virtual void update() = 0;
 
 };
 

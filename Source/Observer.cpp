@@ -4,10 +4,7 @@
 
 #include "../Header/Observer.h"
 
-Observer::Observer(ToDoInterf *i) : interf(i) {}
+Observer::Observer()  {}
 
 Observer::~Observer() = default;
 
-void Observer::update() {
-    interf->count_tasks();
-}

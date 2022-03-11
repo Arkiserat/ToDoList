@@ -7,7 +7,6 @@
 
 #include <string>
 #include "Date.h"
-#include "Observer.h"
 
 class Task
 {

@@ -6,3 +6,15 @@
 6	286	6665614073042923	CMakeFiles/ToDoList.dir/Source/Task.cpp.obj	90a3ae92bc3c065a
 11	1000	6676876161509257	CMakeFiles/ToDoList.dir/Source/Date.cpp.obj	eaae58a77555eb70
 6	2227	6680280554770837	CMakeFiles/ToDoList.dir/Source/Date.cpp.obj	eaae58a77555eb70
+40	759	6687083486768729	CMakeFiles/ToDoList.dir/Source/Date.cpp.obj	eaae58a77555eb70
+61	853	6687109716669746	CMakeFiles/ToDoList.dir/Source/Task.cpp.obj	90a3ae92bc3c065a
+24	142	6687119371054139	CMakeFiles/ToDoList.dir/Source/Observer.cpp.obj	1cb0f7c7cbb7747
+19	828	6687119377731397	CMakeFiles/ToDoList.dir/Source/ToDoList.cpp.obj	5b33320ed34cbb42
+21	147	6687121278420210	CMakeFiles/ToDoList.dir/Source/Observer.cpp.obj	1cb0f7c7cbb7747
+3	808	6687121284474237	CMakeFiles/ToDoList.dir/main.cpp.obj	27593bb318729970
+33	855	6687121285247264	CMakeFiles/ToDoList.dir/Source/ToDoList.cpp.obj	5b33320ed34cbb42
+30	169	6687123999079188	CMakeFiles/ToDoList.dir/Source/Observer.cpp.obj	1cb0f7c7cbb7747
+3	723	6687124004648873	CMakeFiles/ToDoList.dir/main.cpp.obj	27593bb318729970
+19	790	6687124005317385	CMakeFiles/ToDoList.dir/Source/ToDoList.cpp.obj	5b33320ed34cbb42
+24	907	6687124006494485	CMakeFiles/ToDoList.dir/Source/ToDoInterf.cpp.obj	a0fb60d8a4404d7d
+907	1265	6687124010055466	ToDoList.exe	7fdbbcae435515c2

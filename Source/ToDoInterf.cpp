@@ -18,8 +18,8 @@ ToDoInterf::~ToDoInterf() {
     tdl.clear();
 }
 
-void ToDoInterf::add_list(ToDoList *l) {
-    tdl.push_back(*l);
+void ToDoInterf::add_list(ToDoList l) {
+    tdl.push_back(l);
     count_tasks();
 }
 
