@@ -3,4 +3,10 @@ project(ToDoList)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(ToDoList main.cpp Header/ToDoList.h Header/Date.h Source/Task.cpp Header/Task.h Source/Date.cpp Source/ToDoList.cpp Source/Observer.cpp Header/Observer.h Source/ToDoInterf.cpp Header/ToDoInterf.h)
+add_subdirectory(test)
+
+set(SOURCE_FILES Header/Date.h Header/Task.h Header/ToDoList.h Header/ToDoInterf.h Source/Date.cpp Source/Task.cpp Source/ToDoList.cpp Source/ToDoInterf.cpp)
+add_executable(ToDoList main.cpp)
+
+add_library(core ${SOURCE_FILES})
+target_link_libraries(ToDoList core)

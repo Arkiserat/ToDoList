@@ -5,6 +5,9 @@
 #ifndef TODOLIST_DATE_H
 #define TODOLIST_DATE_H
 
+#include <stdexcept>
+#include <ctime>
+
 class Date
 {
 private:
@@ -26,7 +29,8 @@ public:
 
     void setYear(int year);
 
-    bool operator<=(Date &date) const;
+    bool operator<=(const Date &date) const;
+    bool operator<(const Date &date) const;
 };
 
 #endif //TODOLIST_DATE_H

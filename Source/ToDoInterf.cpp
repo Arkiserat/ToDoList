@@ -6,7 +6,10 @@
 
 #include <iostream>
 
+// Constructor and Destroyer
+
 ToDoInterf::ToDoInterf() {
+    tdl = new ToDoList();
     tasks_tot = 0;
     tasks_to_do = 0;
     tasks_done = 0;
@@ -15,53 +18,30 @@ ToDoInterf::ToDoInterf() {
 }
 
 ToDoInterf::~ToDoInterf() {
-    tdl.clear();
+    delete tdl;
 }
 
-void ToDoInterf::add_list(ToDoList l) {
-    tdl.push_back(l);
-    count_tasks();
+// main methods
+
+void ToDoInterf::add_task(Task t) {
+    tdl->add_task(t);
+    update();
 }
 
-void ToDoInterf::delete_list(ToDoList *l) {
-    for(auto it = tdl.begin(); it != tdl.end(); it++){
-        if(it->getNome() == l->getNome()){
-            tdl.erase(it);
-            break;
-        }
-    }
-    count_tasks();
+void ToDoInterf::delete_task(Task t) {
+    tdl->delete_task(t);
+    update();
 }
 
-void ToDoInterf::count_tasks() {
-    tasks_tot = 0;
-    tasks_done = 0;
-    tasks_to_do = 0;
-    tasks_expired = 0;
-    tasks_not_expired = 0;
-    Date *today = new Date();
-
-    for(auto it = tdl.begin(); it != tdl.end(); it++){
-        std::list<Task> nd = it->getTasksToDo();
-        std::list<Task> d = it->getTasksDone();
-        tasks_to_do += nd.size();
-        tasks_done += d.size();
-        tasks_tot += tasks_to_do + tasks_done;
-
-        for (auto ind = nd.begin(); ind != nd.end(); ind++){
-            if (ind->getDate() <= *today)
-                tasks_not_expired++;
-            else
-                tasks_expired++;
-        }
-        for (auto id = d.begin(); id != d.end(); id++){
-            if (id->getDate() <= *today)
-                tasks_not_expired++;
-            else
-                tasks_expired++;
-        }
-    }
+void ToDoInterf::update() {
+    tasks_tot = tdl->count_tot();
+    tasks_done = tdl->count_done();
+    tasks_to_do = tdl->count_not_done();
+    tasks_expired = tdl->count_expired();
+    tasks_not_expired = tdl->count_not_expired();
 }
+
+// Getter
 
 int ToDoInterf::getTasksTot() const {
     return tasks_tot;

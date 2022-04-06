@@ -6,31 +6,28 @@
 #define TODOLIST_TODOINTERF_H
 
 #include "ToDoList.h"
-#include "Observer.h"
 
-class ToDoInterf : public Observer {
+class ToDoInterf{
 private:
-    std::list<ToDoList> tdl;
+    ToDoList *tdl;
     int tasks_tot, tasks_done, tasks_to_do, tasks_expired, tasks_not_expired;
 
 public:
     ToDoInterf();
-
     virtual ~ToDoInterf();
 
-    void count_tasks();
+    // main methods
+    void add_task(Task t);
+    void delete_task(Task t);
 
-    void add_list(ToDoList l);
-    void delete_list(ToDoList *l);
+    void update();
+
+    // Getters
 
     int getTasksTot() const;
-
     int getTasksDone() const;
-
     int getTasksToDo() const;
-
     int getTasksExpired() const;
-
     int getTasksNotExpired() const;
 
 };

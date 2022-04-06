@@ -5,9 +5,9 @@
 #include "../Header/Task.h"
 #include <iostream>
 
-Task::Task(std::string name, Date date) {
+Task::Task(std::string name) {
     Task::name = name;
-    Task::date = date;
+    Task::date = Date();
     Task::done = false;
 }
 

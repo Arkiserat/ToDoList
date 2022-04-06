@@ -4,29 +4,17 @@
 
 #include "../Header/ToDoList.h"
 
-ToDoList::ToDoList(std::string nome, Observer *o) : nome(nome), o(o){
-    // passare this ad un costruttore che richiedeva un parametro per riferimento
-    // a ToDoList per costruire un Observer non funzionava, diceva che this non era
-    // compatibile con il costruttore di default, non usava il costruttore da me definito
-    // che era:
-    // Observer(ToDoList* l)
-}
+ToDoList::ToDoList() = default;
 
 ToDoList::~ToDoList() {
     tasks_to_do.clear();
     tasks_done.clear();
 }
 
+// Basic methods
+
 void ToDoList::add_task(Task t) {
-    // richiesta di parametri del nuovo Task
-    // al momento è una "simulazione"
-    std::string nome = "primo task";
-    Date data;
-
-    // The element is constructed in-place by calling allocator_traits::construct
-    // with args forwarded.
-    tasks_to_do.emplace_back(nome, data);
-
+    tasks_to_do.push_back(t);
 }
 
 void ToDoList::modify_task_name(Task t, std::string new_name) {
@@ -71,6 +59,13 @@ void ToDoList::delete_task(Task t) {
 std::list<Task>::iterator ToDoList::select_task(Task t) {
     //next: gestione di task non esistente nelle liste e task t passato come null
     //solo lancio eccezione senza gestione?
+
+    /*
+     * No, you can't check against NULL because it is not a pointer.
+     * Return and also check against animalList.end().
+     * Only when the iterator is not equal to end() should you dereference it.
+     */
+
     if( !t.isDone() ){
         for(auto it = tasks_to_do.begin(); it != tasks_to_do.end(); it++)
             if( it->getName() == t.getName() )
@@ -80,16 +75,43 @@ std::list<Task>::iterator ToDoList::select_task(Task t) {
             if( it->getName() == t.getName() )
                 return it;
     }
+    return tasks_to_do.end();
+
+    //return nullptr;
 }
 
-const std::list<Task> &ToDoList::getTasksToDo() const {
-    return tasks_to_do;
+// Counters
+
+int ToDoList::count_tot() {
+    return int( tasks_to_do.size() + tasks_done.size() );
 }
 
-const std::list<Task> &ToDoList::getTasksDone() const {
-    return tasks_done;
+int ToDoList::count_done() {
+    return int( tasks_done.size() );
 }
 
-const std::string &ToDoList::getNome() const {
-    return nome;
+int ToDoList::count_not_done() {
+    return int( tasks_to_do.size() );
+}
+
+int ToDoList::count_expired() {
+    Date today = Date();
+    int c = 0;
+
+    for(auto it = tasks_to_do.begin(); it != tasks_to_do.end(); it++){
+        if(it->getDate() < today)
+            c++;
+    }
+    return c;
+}
+
+int ToDoList::count_not_expired() {
+    Date today = Date();
+    int c = 0;
+
+    for(auto it = tasks_to_do.begin(); it != tasks_to_do.end(); it++){
+        if(today <= it->getDate())
+            c++;
+    }
+    return c;
 }

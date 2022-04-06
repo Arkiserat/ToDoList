@@ -7,27 +7,19 @@
 
 #include <list>
 #include "Task.h"
-#include "Observer.h"
 
-//creare una classe "interfaccia che tenga
-// - numero di task da fare
-// - numero di task scaduti
-// - numero di task fatti
 
 class ToDoList {
 private:
-    std::string nome;
     std::list<Task> tasks_to_do;
     std::list<Task> tasks_done;
 
-    Observer* o;
-
 public:
-    ToDoList(std::string nome, Observer* o);
+    ToDoList();
 
     virtual ~ToDoList();
 
-    //parametro task
+    // Basic methods
     void add_task(Task t);
     void modify_task_name(Task t, std::string new_name);
     void modify_task_date(Task t, Date date);
@@ -35,10 +27,12 @@ public:
     void delete_task(Task t);
     std::list<Task>::iterator select_task(Task t);
 
-    const std::string &getNome() const;
-
-    const std::list<Task> &getTasksToDo() const;
-    const std::list<Task> &getTasksDone() const;
+    // Counters
+    int count_tot();
+    int count_done();
+    int count_not_done();
+    int count_expired();
+    int count_not_expired();
 };
 
 #endif //TODOLIST_TODOLIST_H

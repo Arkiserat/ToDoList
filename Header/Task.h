@@ -16,7 +16,7 @@ private:
     Date date;
 
 public:
-    Task(std::string name, Date date);
+    Task(std::string name);
 
     ~Task();
 
