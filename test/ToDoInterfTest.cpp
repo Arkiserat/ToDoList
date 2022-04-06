@@ -13,31 +13,32 @@ public:
     void SetUp() override {
         tdi0 = ToDoInterf();
         tdi1 = ToDoInterf();
-        t = Task("test");
-        tdi1.add_task(t);
+        tdi1.add_task("test");
     }
 
     void TearDown() override {
-        delete &t;
         delete &tdi0;
         delete &tdi1;
     }
 
     ToDoInterf tdi0, tdi1;
-    Task t;
 };
 
 TEST_F(ToDoInterfTest, addTaskWorks) {
     EXPECT_EQ(tdi0.getTasksTot(), 0);
-    tdi0.add_task(t);
+    tdi0.add_task("test");
     EXPECT_EQ(tdi0.getTasksTot(), 1);
 }
 
 TEST_F(ToDoInterfTest, deleteTaskWorks){
     ASSERT_EQ(tdi1.getTasksTot(), 1);
-    tdi1.delete_task(t);
+    tdi1.delete_task("test");
     EXPECT_EQ(tdi1.getTasksTot(), 0);
 }
 
+int main(int argc, char **argv) {
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+}
 
 #endif //TODOLIST_TESTTODOINTERF_H

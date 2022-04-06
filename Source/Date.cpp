@@ -85,6 +85,12 @@ void Date::setYear(int year) {
         Date::year = year;
 }
 
+void Date::setDate(Date d) {
+    this->setYear(d.getYear());
+    this->setMonth(d.getMonth());
+    this->setDay(d.getDay());
+}
+
 bool Date::operator<=(const Date &date) const{
     if (this->year < date.getYear())
         return true;

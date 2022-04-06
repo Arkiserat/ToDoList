@@ -57,27 +57,23 @@ void ToDoList::delete_task(Task t) {
 }
 
 std::list<Task>::iterator ToDoList::select_task(Task t) {
-    //next: gestione di task non esistente nelle liste e task t passato come null
-    //solo lancio eccezione senza gestione?
-
     /*
-     * No, you can't check against NULL because it is not a pointer.
+     * You can't check against NULL because it is not a pointer.
      * Return and also check against animalList.end().
      * Only when the iterator is not equal to end() should you dereference it.
      */
+    auto f = tasks_to_do.end();
 
     if( !t.isDone() ){
         for(auto it = tasks_to_do.begin(); it != tasks_to_do.end(); it++)
             if( it->getName() == t.getName() )
-                return it;
+                f = it;
     } else {
         for(auto it = tasks_done.begin(); it != tasks_done.end(); it++)
             if( it->getName() == t.getName() )
-                return it;
+                f = it;
     }
-    return tasks_to_do.end();
-
-    //return nullptr;
+    return f;
 }
 
 // Counters

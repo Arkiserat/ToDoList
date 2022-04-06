@@ -29,6 +29,8 @@ public:
 
     void setYear(int year);
 
+    void setDate(Date d);
+
     bool operator<=(const Date &date) const;
     bool operator<(const Date &date) const;
 };

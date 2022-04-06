@@ -23,13 +23,25 @@ ToDoInterf::~ToDoInterf() {
 
 // main methods
 
-void ToDoInterf::add_task(Task t) {
+void ToDoInterf::add_task(std::string n) {
+    Task t = Task(n);
     tdl->add_task(t);
     update();
 }
 
-void ToDoInterf::delete_task(Task t) {
-    tdl->delete_task(t);
+void ToDoInterf::delete_task(std::string n) {
+    Task t = Task(n);
+    std::list<Task> temp;
+    auto it = tdl->select_task(t);
+    if(it != temp.end())
+        tdl->delete_task(t);
+    else {
+        t.toggleDone();
+        it = tdl->select_task(t);
+        if(it != temp.end())
+            tdl->delete_task(t);
+    }
+
     update();
 }
 

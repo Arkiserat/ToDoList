@@ -17,8 +17,8 @@ public:
     virtual ~ToDoInterf();
 
     // main methods
-    void add_task(Task t);
-    void delete_task(Task t);
+    void add_task(std::string n);
+    void delete_task(std::string n);
 
     void update();
 
