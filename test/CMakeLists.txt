@@ -7,6 +7,6 @@ add_subdirectory(./lib/googletest-main/)
 set(gtest_SOURCE_DIR, ./lib/googletest-main/googletest/)
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
-set(TEST_SOURCE_FILES DateTest.cpp TaskTest.cpp ToDoListTest.cpp ToDoInterfTest.cpp)
+set(TEST_SOURCE_FILES DateTest.cpp TaskTest.cpp ToDoListTest.cpp ToDoInterfTest.cpp mainTest.cpp)
 add_executable(RunToDoListTests ${TEST_SOURCE_FILES})
 target_link_libraries(RunToDoListTests PUBLIC gtest gtest_main core)

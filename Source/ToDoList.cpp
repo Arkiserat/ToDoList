@@ -14,25 +14,26 @@ ToDoList::~ToDoList() {
 // Basic methods
 
 void ToDoList::add_task(Task t) {
-    tasks_to_do.push_back(t);
+    if(t.isDone()){
+        tasks_done.push_back(t);
+    } else {
+        tasks_to_do.push_back(t);
+    }
 }
 
 void ToDoList::modify_task_name(Task t, std::string new_name) {
-    //gestione lancio eccezione da parte di select_task
     auto it = select_task(t);
 
     it->setName(new_name);
 }
 
 void ToDoList::modify_task_date(Task t, Date date) {
-    //gestione lancio eccezione da parte di select_task
     auto it = select_task(t);
 
     it->setDate(date);
 }
 
 void ToDoList::toggle_task_done(Task t) {
-    //gestione lancio eccezione da parte di select_task
     auto it = select_task(t);
 
     it->toggleDone();
@@ -47,33 +48,32 @@ void ToDoList::toggle_task_done(Task t) {
 }
 
 void ToDoList::delete_task(Task t) {
-    //gestione lancio eccezione da parte di select_task
     auto it = select_task(t);
 
-    if( !t.isDone() )
+    if (! it->isDone())
         tasks_to_do.erase(it);
     else
         tasks_done.erase(it);
 }
 
 std::list<Task>::iterator ToDoList::select_task(Task t) {
-    /*
-     * You can't check against NULL because it is not a pointer.
-     * Return and also check against animalList.end().
-     * Only when the iterator is not equal to end() should you dereference it.
-     */
-    auto f = tasks_to_do.end();
+    std::list<Task>::iterator it;
 
     if( !t.isDone() ){
-        for(auto it = tasks_to_do.begin(); it != tasks_to_do.end(); it++)
+        for(it = tasks_to_do.begin(); it != tasks_to_do.end(); it++)
             if( it->getName() == t.getName() )
-                f = it;
+                break;
     } else {
-        for(auto it = tasks_done.begin(); it != tasks_done.end(); it++)
+        for(it = tasks_done.begin(); it != tasks_done.end(); it++)
             if( it->getName() == t.getName() )
-                f = it;
+                break;
     }
-    return f;
+
+    if(it != tasks_done.end() && it != tasks_to_do.end()) {
+        return it;
+    } else {
+        throw std::runtime_error("not found");
+    }
 }
 
 // Counters

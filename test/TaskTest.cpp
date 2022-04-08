@@ -9,16 +9,14 @@
 #include "gtest/gtest.h"
 
 class TaskTest : public ::testing::Test {
-public:
+protected:
     void SetUp() override{
         t = Task("test");
     }
 
     void TearDown() override {
-        delete &t;
     }
 
-    Date today, not_today;
     Task t;
 };
 
@@ -31,11 +29,5 @@ TEST_F(TaskTest, toggleDoneWorks){
     t.toggleDone();
     EXPECT_EQ(t.isDone(), true);
 }
-
-int main(int argc, char **argv) {
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}
-
 
 #endif //TODOLIST_TESTTASK_CPP

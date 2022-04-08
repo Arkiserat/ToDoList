@@ -10,6 +10,11 @@ Task::Task(std::string name) {
     Task::date = Date();
     Task::done = false;
 }
+Task::Task() {
+    Task::name = "generic";
+    Task::date = Date();
+    Task::done = false;
+}
 
 Task::~Task() = default;
 

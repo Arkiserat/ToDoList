@@ -79,10 +79,11 @@ void Date::setMonth(int month) {
 }
 
 void Date::setYear(int year) {
-    if(year < 1900 || year > 2100)
-        throw std::out_of_range("wrong year");
-    else
+    if(year < 1900 || year > 2100) {
+        throw std::out_of_range("Wrong year"); // segmentation fault
+    }else {
         Date::year = year;
+    }
 }
 
 void Date::setDate(Date d) {

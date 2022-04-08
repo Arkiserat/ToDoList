@@ -30,16 +30,14 @@ void ToDoInterf::add_task(std::string n) {
 }
 
 void ToDoInterf::delete_task(std::string n) {
-    Task t = Task(n);
-    std::list<Task> temp;
-    auto it = tdl->select_task(t);
-    if(it != temp.end())
+    Task t = Task(std::move(n));
+    std::list<Task>::iterator it;
+
+    try{
         tdl->delete_task(t);
-    else {
+    } catch (std::runtime_error& e){
         t.toggleDone();
-        it = tdl->select_task(t);
-        if(it != temp.end())
-            tdl->delete_task(t);
+        tdl->delete_task(t);
     }
 
     update();

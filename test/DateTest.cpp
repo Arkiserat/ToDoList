@@ -9,23 +9,15 @@
 #include "gtest/gtest.h"
 
 class DateTest : public ::testing::Test {
-public:
+protected:
     void SetUp() override {
-        now = std::time(0);
-        lt = std::localtime(&now);
-
         t = Date();
     }
 
     void TearDown() override {
-        delete &t;
-        delete &now;
-        delete lt;
     }
 
     Date t;
-    std::time_t now;
-    std::tm *lt;
 };
 
 /*
@@ -44,6 +36,9 @@ public:
 
 TEST_F(DateTest, defaultConstructorWorks){
 
+    std::time_t now = std::time(0);
+    std::tm *lt = std::localtime(&now);
+
     int y = 1900 + lt->tm_year;
     int m = 1 + lt->tm_mon;
     int d = lt->tm_mday;
@@ -51,12 +46,14 @@ TEST_F(DateTest, defaultConstructorWorks){
     EXPECT_EQ(t.getYear(), y);
     EXPECT_EQ(t.getMonth(), m);
     EXPECT_EQ(t.getDay(), d);
+
+    delete lt;
 }
 
 TEST_F(DateTest, setYearWorks) {
-    EXPECT_THROW(t.setYear(0), std::out_of_range);
-    EXPECT_THROW(t.setYear(999999), std::out_of_range);
     EXPECT_NO_THROW(t.setYear(2025));
+    EXPECT_THROW(t.setYear(0), std::out_of_range); //segmentation fault
+    EXPECT_THROW(t.setYear(2200), std::out_of_range);
 }
 
 TEST_F(DateTest, setMonthWorks) {
@@ -102,11 +99,6 @@ TEST_F(DateTest, minOperatorWorks) {
     yesterday.setDate(today);
     EXPECT_EQ(yesterday < today, false);
     EXPECT_EQ(today < yesterday, false);
-}
-
-int main(int argc, char **argv) {
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
 }
 
 #endif //TODOLIST_TESTDATE_CPP
