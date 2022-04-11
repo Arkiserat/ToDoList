@@ -44,4 +44,30 @@ TEST_F(ToDoInterfTest, deleteTaskWorks){
     EXPECT_EQ(tdi1->getTasksTot(), 0);
 }
 
+TEST_F(ToDoInterfTest, DoesModifyDate) {
+    Date nd = Date(1, 1, 2022);
+
+    EXPECT_EQ(tdi1->getTasksExpired(), 0);
+    tdi1->modify_task_date("test", nd);
+    EXPECT_EQ(tdi1->getTasksExpired(), 1);
+
+    tdi1->add_task("new test");
+
+    EXPECT_EQ(tdi1->getTasksExpired(), 1);
+    tdi1->modify_task_date("new test", nd);
+    EXPECT_EQ(tdi1->getTasksExpired(), 2);
+}
+
+TEST_F(ToDoInterfTest, DoesToggle) {
+    EXPECT_EQ(tdi1->getTasksDone(), 0);
+    tdi1->toggle_done("test");
+    EXPECT_EQ(tdi1->getTasksDone(), 1);
+
+    tdi1->add_task("new test");
+
+    EXPECT_EQ(tdi1->getTasksDone(), 1);
+    tdi1->toggle_done("new test");
+    EXPECT_EQ(tdi1->getTasksDone(), 2);
+}
+
 #endif //TODOLIST_TESTTODOINTERF_H

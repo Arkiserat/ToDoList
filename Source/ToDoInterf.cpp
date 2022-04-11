@@ -43,6 +43,50 @@ void ToDoInterf::delete_task(std::string n) {
     update();
 }
 
+void ToDoInterf::modify_task_name(std::string task, std::string new_name) {
+    Task t = Task(task);
+    try {
+        tdl->modify_task_name(t, new_name);
+    } catch (std::runtime_error& e1) {
+        try {
+            t.toggleDone();
+            tdl->modify_task_name(t, new_name);
+        } catch (std::runtime_error& e2) {
+            std::cout << "shit! No new name for: " << task << std::endl;
+        }
+    }
+}
+
+void ToDoInterf::modify_task_date(std::string task, Date new_date) {
+    Task t = Task(task);
+    try{
+        tdl->modify_task_date(t, new_date);
+    } catch (std::runtime_error& e1) {
+        try{
+            t.toggleDone();
+            tdl->modify_task_date(t, new_date);
+        } catch (std::runtime_error& e2) {
+            std::cout << "shit! No new date for: " << task << std::endl;
+        }
+    }
+    update();
+}
+
+void ToDoInterf::toggle_done(std::string task) {
+    Task t = Task(task);
+    try{
+        tdl->toggle_task_done(t);
+    } catch (std::runtime_error& e1){
+        try {
+            t.toggleDone();
+            tdl->toggle_task_done(t);
+        } catch (std::runtime_error& e2) {
+            std::cout << "shit! No toggle on: " << task << std::endl;
+        }
+    }
+    update();
+}
+
 void ToDoInterf::update() {
     tasks_tot = tdl->count_tot();
     tasks_done = tdl->count_done();
@@ -71,5 +115,12 @@ int ToDoInterf::getTasksExpired() const {
 
 int ToDoInterf::getTasksNotExpired() const {
     return tasks_not_expired;
+}
+
+// printer
+
+void ToDoInterf::print_interface() {
+    std::cout << "tot: " << tasks_tot << ", to do: " << tasks_to_do << ", expired: " << tasks_expired << std::endl;
+    tdl->print_tasks();
 }
 

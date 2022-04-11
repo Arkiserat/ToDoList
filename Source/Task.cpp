@@ -47,7 +47,7 @@ void Task::toggleDone() {
 
 void Task::printTask() const {
     if(done)
-        std::cout << " _ " << name << " " << date.getDay() << "/" << date.getMonth() << "/" << date.getYear() << std::endl;
-    else
         std::cout << " X " << name << " " << date.getDay() << "/" << date.getMonth() << "/" << date.getYear() << std::endl;
+    else
+        std::cout << " _ " << name << " " << date.getDay() << "/" << date.getMonth() << "/" << date.getYear() << std::endl;
 }

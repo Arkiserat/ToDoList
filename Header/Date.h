@@ -13,24 +13,23 @@ class Date
 private:
     int day, month, year;
     std::out_of_range e = std::out_of_range("Wrong range of values");
+
+    bool isOk(int d, int m, int y);
+
 public:
     Date();
     Date(int day, int month, int year);
     ~Date();
 
     int getDay() const;
-
     int getMonth() const;
-
     int getYear() const;
 
     void setDay(int day);
-
     void setMonth(int month);
-
     void setYear(int year);
 
-    void setDate(Date d);
+    void setDate(const Date& d);
 
     bool operator<=(const Date &date) const;
     bool operator<(const Date &date) const;

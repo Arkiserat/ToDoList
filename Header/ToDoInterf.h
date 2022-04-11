@@ -20,6 +20,10 @@ public:
     void add_task(std::string n);
     void delete_task(std::string n);
 
+    void modify_task_name(std::string task, std::string new_name);
+    void modify_task_date(std::string task, Date new_date);
+    void toggle_done(std::string task);
+
     void update();
 
     // Getters
@@ -30,7 +34,9 @@ public:
     int getTasksExpired() const;
     int getTasksNotExpired() const;
 
-};
+    // printer
+    void print_interface();
 
+};
 
 #endif //TODOLIST_TODOINTERF_H

@@ -111,3 +111,12 @@ int ToDoList::count_not_expired() {
     }
     return c;
 }
+
+void ToDoList::print_tasks() {
+    for(auto it = tasks_to_do.begin(); it != tasks_to_do.end(); it++){
+        it->printTask();
+    }
+    for(auto it = tasks_done.begin(); it != tasks_done.end(); it++) {
+        it->printTask();
+    }
+}

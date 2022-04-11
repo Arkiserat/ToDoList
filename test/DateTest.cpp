@@ -11,7 +11,7 @@
 class DateTest : public ::testing::Test {
 protected:
     void SetUp() override {
-        t = Date();
+        t = Date(1, 1, 2000);
     }
 
     void TearDown() override {
@@ -35,6 +35,7 @@ protected:
  */
 
 TEST_F(DateTest, defaultConstructorWorks){
+    t = Date();
 
     std::time_t now = std::time(0);
     std::tm *lt = std::localtime(&now);
@@ -51,14 +52,25 @@ TEST_F(DateTest, defaultConstructorWorks){
 }
 
 TEST_F(DateTest, setYearWorks) {
-    EXPECT_NO_THROW(t.setYear(2025));
     EXPECT_THROW(t.setYear(0), std::out_of_range);
     EXPECT_THROW(t.setYear(2200), std::out_of_range);
+    EXPECT_NO_THROW(t.setYear(2024));
+
+    t.setDay(29);
+    t.setMonth(2);
+    EXPECT_THROW(t.setYear(2023), std::out_of_range);
 }
 
 TEST_F(DateTest, setMonthWorks) {
     EXPECT_THROW(t.setMonth(0), std::out_of_range);
     EXPECT_THROW(t.setMonth(13), std::out_of_range);
+
+    t.setDay(31);
+    EXPECT_THROW(t.setMonth(2), std::out_of_range);
+    EXPECT_THROW(t.setMonth(6), std::out_of_range);
+    EXPECT_NO_THROW(t.setMonth(3));
+
+    t.setDay(5);
     EXPECT_NO_THROW(t.setMonth(2));
 }
 
