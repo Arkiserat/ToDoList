@@ -12,6 +12,7 @@ class Date
 {
 private:
     int day, month, year;
+    std::out_of_range e = std::out_of_range("Wrong range of values");
 public:
     Date();
     Date(int day, int month, int year);

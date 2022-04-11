@@ -66,21 +66,21 @@ void Date::setDay(int day){
         }
     }
     if(!ok)
-        throw std::out_of_range("wrong day");
+        throw e;
     else
         Date::day = day;
 }
 
 void Date::setMonth(int month) {
     if (month < 1 || month > 12)
-        throw std::out_of_range("wrong month");
+        throw e;
     else
         Date::month = month;
 }
 
 void Date::setYear(int year) {
     if(year < 1900 || year > 2100) {
-        throw std::out_of_range("Wrong year"); // segmentation fault
+        throw e; // SIGSEGV
     }else {
         Date::year = year;
     }

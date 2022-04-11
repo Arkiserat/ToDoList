@@ -52,7 +52,7 @@ TEST_F(DateTest, defaultConstructorWorks){
 
 TEST_F(DateTest, setYearWorks) {
     EXPECT_NO_THROW(t.setYear(2025));
-    EXPECT_THROW(t.setYear(0), std::out_of_range); //segmentation fault
+    EXPECT_THROW(t.setYear(0), std::out_of_range);
     EXPECT_THROW(t.setYear(2200), std::out_of_range);
 }
 
