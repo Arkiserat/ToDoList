@@ -35,7 +35,7 @@ public:
     int count_not_expired();
 
     //printer
-    void print_tasks();
+    void print_tasks() const;
 };
 
 #endif //TODOLIST_TODOLIST_H

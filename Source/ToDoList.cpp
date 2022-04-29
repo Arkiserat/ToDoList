@@ -112,7 +112,7 @@ int ToDoList::count_not_expired() {
     return c;
 }
 
-void ToDoList::print_tasks() {
+void ToDoList::print_tasks() const {
     for(auto it = tasks_to_do.begin(); it != tasks_to_do.end(); it++){
         it->printTask();
     }

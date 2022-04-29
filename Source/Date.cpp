@@ -97,7 +97,7 @@ bool Date::operator<(const Date &date) const{
     return false;
 }
 
-bool Date::isOk(int d, int m, int y) {
+bool Date::isOk(int d, int m, int y) const{
     if(y < 1900 || y > 2100)
         return false;
 

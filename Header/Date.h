@@ -14,7 +14,7 @@ private:
     int day, month, year;
     std::out_of_range e = std::out_of_range("Wrong range of values");
 
-    bool isOk(int d, int m, int y);
+    bool isOk(int d, int m, int y) const;
 
 public:
     Date();
